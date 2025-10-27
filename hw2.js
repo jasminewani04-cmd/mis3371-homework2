@@ -233,9 +233,13 @@ function confirmPword() {
 
 //review button implementation
 function reviewInput() {
-    var formcontent = document.getElementById("signup");
+    const formcontent = document.getElementById("signup");
+    if (!formcontent) {
+        console.warn('reviewInput: form with id "signup" not found');
+        return;
+    }
     var formoutput = "<table class='output'><th colspan = '3'> Review Your Information:</th>";
-    for (let i = 0; i < formcontent.length; i++) {
+    for (let i = 0; i < formcontent.elements.length; i++) {
         if (formcontent.elements[i].value !== "") {
             switch (formcontent.elements[i].type) {
                 case "checkbox":
